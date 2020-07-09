@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<script>
+
+function computerPlay() {
+    const randomNum = Math.floor(Math.random() * 3);
+    const possibleMoves = ['Rock', 'Paper', 'Scissors'];
+
+    return possibleMoves[randomNum];
+}
+
+function playRound(playerSelection, computerSelection) {
+    computerSelection = computerSelection.toLowerCase();
+
+    if (playerSelection === computerSelection) {
+        // return 'Draw. Play Again';
+        return 6;
+    }
+
+    else if (playerSelection === 'rock') {
+        if (computerSelection === 'paper') {
+            // return 'You Lose! Paper beats Rock';
+            return 3;  
+        }
+
+        else {
+            // return 'You Win! Rock beats Scissors';
+            return 0;  
+        }
+    }
+
+    else if (playerSelection === 'paper') {
+        if (computerSelection === 'rock') {
+            // return 'You Win! Paper beats Rock';
+            return 1;            
+        }
+
+        else {
+            // return 'You Lose! Scissors beats Paper';
+            return 4;            
+        }
+    }
+
+    else if (playerSelection === 'scissors') {
+        if (computerSelection === 'rock') {
+            // return 'You Lose! Rock beats Scissors';
+            return 5;            
+        }
+
+        else {
+            // return 'You Win! Scissors beats Paper';
+            return 2;            
+        }
+    }
+}
+
+function game() {
+    outcomeStrings = [
+    'You Win! Rock beats Scissors',
+    'You Win! Paper beats Rock',
+    'You Win! Scissors beats Paper',
+    'You Lose! Paper beats Rock',
+    'You Lose! Scissors beats Paper',
+    'You Lose! Rock beats Scissors',
+    'Draw. Play Again'];
+
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 1; i < 6; i++) {
+
+        let playerInput = prompt('Rock, Paper or Scissors?');
+
+        // if player enters something into the prompt
+        if (playerInput) {
+
+            playerInput = playerInput.toLowerCase();
+
+            // if player enters the correct options
+            if (playerInput === 'rock' || playerInput === 'paper' || playerInput === 'scissors') {
+
+                const outcome = playRound(playerInput, computerPlay());
+
+                function printToConsole() {
+                    console.log(`---------Round ${i}---------`);
+                    console.log(outcomeStrings[outcome]);
+                    console.log(`Player Score: ${playerScore}`);
+                    console.log(`Computer Score: ${computerScore}`);
+                }
+
+                if (outcome === 0 || outcome === 1 || outcome === 2) {
+                    playerScore++;
+                    printToConsole();
+                }
+
+                else if (outcome === 3 || outcome === 4 || outcome === 5) {
+                    computerScore++;
+                    printToConsole();
+                }
+
+                else {
+                    printToConsole();
+                }
+            }
+       }
+    }
+
+    // console.log(playerScore > computerScore ? 'Congratulations, you are the winner!':
+    // computerScore > playerScore ? 'Sorry, you lost to the computer':
+    // 'It\s a draw'
+    // );
+
+    console.log(`WINNER: ${playerScore > computerScore ? 'Player':
+    computerScore > playerScore ? 'Computer':
+    'None. It\'s a draw'
+    }`)
+}
+
+game();
+
+</script>
+</html>
