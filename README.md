@@ -1,5 +1,7 @@
-First Rock-Paper-Scissors game created in console.
+# Rock-Paper-Scissors
 
-Update Jul 16, 2020:
-Created simple UI for the game.
+Created basic rock-paper-scissors game. First javascript project under The Odin Project curriculum.
+
 Used DOM manipulation and event listeners.
+
+Live link: https://huskyharris.github.io/rock-paper-scissors/
